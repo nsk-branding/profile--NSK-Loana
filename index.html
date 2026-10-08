@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loana's Web</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    /* Fondo general oscuro, como el de la imagen */
+    background: #0a0a0a;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    color: #fff;
+    min-height: 100%;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  /* ---------- NAVBAR ---------- */
+  .navbar {
+    width: 100%;
+    max-width: 1100px;
+    background: transparent;
+    /* Borde color cobre */
+    border: 1px solid #b87333;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(184, 115, 51, 0.4), 0 0 4px rgba(184, 115, 51, 0.2) inset;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 18px 30px;
+    margin-bottom: 25px;
+  }
+  .navbar a {
+    /* Color cobre claro para los enlaces */
+    color: #d18e54;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-shadow: 0 0 8px rgba(184, 115, 51, 0.6);
+    transition: 0.2s;
+  }
+  .navbar a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #b87333;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    width: 100%;
+    max-width: 1100px;
+    /* Fondo completamente transparente */
+    background: transparent;
+    /* Sin bordes ni sombras para que la imagen se integre */
+    border: none;
+    box-shadow: none;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 260px; /* Puedes ajustar la altura según tu imagen */
+    margin-bottom: 25px;
+    padding: 10px;
+    position: relative;
+  }
+
+  /* Estilo para la imagen PNG transparente */
+  .hero img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    /* Opcional: un ligero brillo para que resalte sobre el fondo oscuro */
+    filter: drop-shadow(0 0 15px rgba(184, 115, 51, 0.3));
+  }
+
+  /* Si decides mantener el texto "Loana" en lugar de una imagen, 
+     aquí está el estilo actualizado a la paleta cobre */
+  .hero h1 {
+    font-family: 'Brush Script MT', cursive;
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    font-style: italic;
+    background: linear-gradient(90deg, #d18e54 0%, #ffffff 50%, #d18e54 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 25px rgba(184, 115, 51, 0.8),
+                 0 0 45px rgba(184, 115, 51, 0.5);
+    letter-spacing: 2px;
+    text-align: center;
+  }
+
+  /* ---------- GRID RESPONSIVE ---------- */
+  .grid {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+  }
+
+  .card {
+    background: #0a0a0a;
+    /* Borde cobre */
+    border: 1px solid #b87333;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(184, 115, 51, 0.5);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card .img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #000 center/cover no-repeat;
+    position: relative;
+  }
+  .card .img::before {
+    content: attr(data-name);
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    color: #ccc;
+    font-size: 0.85rem;
+  }
+
+  .card .body {
+    padding: 12px 10px 16px;
+    text-align: center;
+  }
+  .card .body h3 {
+    color: #fff;
+    font-size: clamp(1rem, 1.5vw + 0.5rem, 1.4rem);
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-shadow: 0 0 6px rgba(255,255,255,0.3);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .card .btn {
+    display: inline-block;
+    background: #0a0a0a;
+    color: #fff;
+    /* Borde cobre */
+    border: 1px solid #b87333;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    box-shadow: 0 0 8px rgba(184, 115, 51, 0.6);
+    transition: 0.2s;
+    white-space: nowrap;
+  }
+  .card .btn:hover {
+    background: #b87333;
+    color: #000;
+    box-shadow: 0 0 16px #b87333;
+  }
+</style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="https://www.utherverse.com/net/home.aspx">Home</a>
+    <a href="http://support.utherverse.com/">Support</a>
+    <a href="http://forums.utherverse.com/">Forums</a>
+    <a href="https://www.utherverse.com/Clothing">Clothing</a>
+    <a href="https://www.utherverse.com/net/search/search.aspx">Search</a>
+  </nav>
+
+  <!-- HERO MODIFICADO -->
+  <div class="hero">
+    <!-- 
+      REEMPLAZA 'tu-imagen.png' por la ruta real de tu archivo PNG.
+      He puesto una imagen de ejemplo para que veas el efecto.
+    -->
+    <img src="https://i.imgur.com/8Qp2X6L.png" alt="Loana NSK Logo">
+    
+    <!-- Si prefieres usar el texto en lugar de la imagen, borra la etiqueta <img> de arriba y descomenta esta: -->
+    <!-- <h1>Loana</h1> -->
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="img" data-name="Makeup"></div>
+      <div class="body">
+        <h3>Makeup</h3>
+        <a href="https://www.utherverse.com/clothing/search.aspx?cat=35&mid=92300240" class="btn">Ver Catálogo</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img" data-name="Eyes"></div>
+      <div class="body">
+        <h3>Eyes</h3>
+        <a href="https://www.utherverse.com/clothing/search.aspx?cat=93&mid=92300240" class="btn">Ver Catálogo</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img" data-name="Skin"></div>
+      <div class="body">
+        <h3>Skin</h3>
+        <a href="https://www.utherverse.com/clothing/search.aspx?q=skin&g=2&cat=24&mid=92300240"
+           target="_blank" rel="noopener noreferrer" class="btn">Ver Catálogo</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img" data-name="Bottom"></div>
+      <div class="body">
+        <h3>Bottom</h3>
+        <a href="#" class="btn">Ver Catálogo</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img" data-name="Top"></div>
+      <div class="body">
+        <h3>Top</h3>
+        <a href="#" class="btn">Ver Catálogo</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img" data-name="Coordinated Set"></div>
+      <div class="body">
+        <h3>Coordinated Set</h3>
+        <a href="https://www.utherverse.com/clothing/search.aspx?cat=57&mid=92300240" class="btn">Ver Catálogo</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img" data-name="Hair"></div>
+      <div class="body">
+        <h3>Hair</h3>
+        <a href="https://www.utherverse.com/clothing/search.aspx?cat=92&mid=92300240" class="btn">Ver Catálogo</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img" data-name="Shoes"></div>
+      <div class="body">
+        <h3>Shoes</h3>
+        <a href="https://www.utherverse.com/clothing/search.aspx?cat=37&mid=92300240" class="btn">Ver Catálogo</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img" data-name="Tattoo"></div>
+      <div class="body">
+        <h3>Tattoo</h3>
+        <a href="https://www.utherverse.com/clothing/search.aspx?cat=36&mid=92300240" class="btn">Ver Catálogo</a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
